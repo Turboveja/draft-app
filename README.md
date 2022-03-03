@@ -1,1 +1,6 @@
-# itop-app
+##### Draft Application
+
+### Includes
+* Migrations
+* Seeding
+* MVC
