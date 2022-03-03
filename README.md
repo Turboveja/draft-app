@@ -15,14 +15,17 @@
 * No internet explorer example
 * User observer example
 * Basic Job Structure
+* Simple Kernel command execution task
 * Basic Mailing Structure
 * Basic custom api response
+* Telescope
 
 ### Future Features
-* Cron-Kernel Automatic tasks
 * Adavanced queues
+* Passport suite
 * Laravel Breeze Testing
 * Cache uses
+* Full package development
 * Language strings
 * S3 Storage
 * Localization api
