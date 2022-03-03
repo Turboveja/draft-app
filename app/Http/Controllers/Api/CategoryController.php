@@ -77,7 +77,8 @@ class CategoryController extends Controller
             $item = (new CategoryRepository())->store($name);
 
             //Adds images to relation
-            if (count($request->images)) {
+            $images = $request->images ?: [];
+            if (count($images)) {
                 $image_repository = new ImageRepository();
                 foreach ($request->images as $image) {//Store image
                     $image_repository->store($image, $item);
