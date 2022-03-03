@@ -1,5 +1,9 @@
 <script src="{{ asset("/assets/libs/jquery/dist/jquery.min.js") }}"></script>
 
+<link href="{{ asset("/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css") }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+      href="{{ asset("/assets/extra-libs/datatables.net-bs4/css/responsive.dataTables.min.css") }}">
+
 <script src="{{ asset("/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js") }}"></script>
 <!-- apps -->
 <script src="{{ asset("/dist/js/app.min.js") }}></script>
@@ -17,5 +21,6 @@
 <script src="{{ asset("/dist/js/custom.min.js") }}></script>
 <!--This page JavaScript -->
 <script src="{{ asset("/assets/libs/apexcharts/dist/apexcharts.min.js") }}"></script>
+
 <!-- Chart JS -->
 <script src="{{ asset("/dist/js/pages/dashboards/dashboard1.js") }}"></script>
