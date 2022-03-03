@@ -2,7 +2,9 @@
 
 namespace App\Http\Repositories;
 
+use App\Mail\WelcomeUserMail;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class UserRepository
 {
@@ -97,5 +99,16 @@ class UserRepository
         if ($row) {
             $row->images()->delete();
         }
+    }
+
+    /**
+     * Sending welcome user Mail
+     *
+     * @param User $user
+     * @return void
+     */
+    public function sendWelcomeMail(User $user)
+    {
+        Mail::to($user->email)->send(new WelcomeUserMail($user->name));
     }
 }
