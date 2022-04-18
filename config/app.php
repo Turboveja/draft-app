@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Aerni\Spotify\Providers\SpotifyServiceProvider::class
     ],
 
     /*
@@ -195,6 +195,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // ...
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Spotify' => Aerni\Spotify\Facades\SpotifyFacade::class,
     ])->toArray(),
 
 ];
