@@ -8,7 +8,7 @@ class SpotifyTestController extends Controller
 {
     /**
      * Sandbox methods
-     * 
+     *
      * @return mixed
      */
     public function sandbox()
