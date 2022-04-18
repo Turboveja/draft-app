@@ -1,42 +1,47 @@
-# Laravel 9.* Draft Application
+##### Laravel 9.* Draft Application
 
 ### Includes
 * Sail+Docker
 * Migrations
-* Seeds/Factories
+* Seeding
 * Models
-* Pivot relations
-* Polymorph relations
 * Controllers
-* Repositories
+* Pivot relations
+* Polymorph relation
 * Api CRUDs
 * Custom logger
-* Role-Permission-User Structure with Spatie
-* Local storage
-* Middleware No internet explorer example
+* Role-Permission-User Structure (spatie/laravel-permission)
+* Debug tools (barryvdh/laravel-debugbar)
+* Image local storage
+* No internet explorer example
 * User observer example
 * Basic Job Structure
 * Simple Kernel command execution task
 * Basic Mailing Structure
 * Basic custom api response
 * Telescope
-* Debugbar
+* Third-party connection testing (aerni/laravel-spotify)
+* Full static landing theme (resources/front-end-static | public/front-end-static | LandingController)
 
 ### Future Features
 * Adavanced queues
 * Passport suite
 * Laravel Breeze Testing
-* Using cache
+* Cache uses
+* Laravel Requests
+* Laravel Resources
 * Full package development
+* Api Doc
+* Postman routes export
 * Language strings
 * S3 Storage
 * Localization api
-* Pivot self attributes
+* Pivot with attributes
 * Blade layouts with template
 * Full CRUD template adaptation
 * Id encryption
 * Custom api response advanced
-* SOLID and clean code advanced
+* Improve SOLID
 * Testing
 * DDD Example
-* Doctrine Testing
+* Dynamic Landing Page
