@@ -22,3 +22,5 @@ Route::resource('products', \App\Http\Controllers\Api\ProductController::class)-
 Route::post('products/{id}/categories', [\App\Http\Controllers\Api\ProductController::class, 'updateCategories']);
 Route::resource('categories', \App\Http\Controllers\Api\CategoryController::class)->except(['create', 'edit']);
 Route::resource('users', \App\Http\Controllers\Api\UserController::class)->except(['create', 'edit']);
+
+Route::get('spotify-test', [\App\Http\Controllers\SpotifyTestController::class, 'sandbox']);
