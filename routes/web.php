@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //auth group
 Route::middleware(['auth', 'no-internet-explorer'])->group(function (){
-//    Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 //    Route::resource('companies', \App\Http\Controllers\CompanyController::class, ['except' => ['show']]);
 });
 

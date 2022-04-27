@@ -25,8 +25,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Response::macro('api_custom_response', function ($wrap) {
-            return Response::make($wrap['custom_wrapper'], $wrap['status_code'], $wrap['headers']);
+        Response::macro('api_custom_response', function ($success = true, $data = [], $status = 200, $msg = '', $dev_log = [], $headers = []) {
+            if (!$success) {
+                \Log::channel('api_custom_error_responses')->error(
+                    'api_custom_response Error', [
+                    'data' => $data,
+                    'dev_log' => $dev_log
+                ]);
+            }
+
+            return Response::make([
+                'success' => $success,
+                'data' => $data,
+                'msg' => $msg
+            ], $status, $headers);
         });
     }
 }

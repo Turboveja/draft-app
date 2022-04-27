@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'es_ES',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,7 +178,12 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Aerni\Spotify\Providers\SpotifyServiceProvider::class
+        Aerni\Spotify\Providers\SpotifyServiceProvider::class,
+
+        /*
+         * Repository Provider
+         */
+        App\Providers\RepositoryServiceProvider::class,
     ],
 
     /*

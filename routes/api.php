@@ -24,3 +24,6 @@ Route::resource('categories', \App\Http\Controllers\Api\CategoryController::clas
 Route::resource('users', \App\Http\Controllers\Api\UserController::class)->except(['create', 'edit']);
 
 Route::get('spotify-test', [\App\Http\Controllers\SpotifyTestController::class, 'sandbox']);
+Route::get('artisan-test', [\App\Http\Controllers\ArtisanExecutionTestController::class, 'sandbox']);
+
+Route::resource('genres', \App\Http\Controllers\Api\GenreController::class)->only(['index', 'store']);

@@ -9,6 +9,7 @@
 * Pivot relations
 * Polymorph relation
 * Api CRUDs
+* Repository Pattern (Repositories | Interfaces | Base methods)
 * Custom logger
 * Role-Permission-User Structure (spatie/laravel-permission)
 * Debug tools (barryvdh/laravel-debugbar)
@@ -17,6 +18,7 @@
 * User observer example
 * Basic Job Structure
 * Simple Kernel command execution task
+* Artisan executions by commands test
 * Basic Mailing Structure
 * Basic custom api response
 * Telescope
@@ -25,6 +27,7 @@
 
 ### Future Features
 * Adavanced queues
+* Third party dev iSeed
 * Passport suite
 * Laravel Breeze Testing
 * Cache uses
@@ -45,3 +48,4 @@
 * Testing
 * DDD Example
 * Dynamic Landing Page
+* 
