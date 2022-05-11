@@ -19,7 +19,7 @@ Route::middleware(['auth', 'no-internet-explorer'])->group(function (){
 //    Route::resource('companies', \App\Http\Controllers\CompanyController::class, ['except' => ['show']]);
 });
 
-Route::get('/send/email', 'HomeController@mail');
+//Route::get('/send/email', 'HomeController@mail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

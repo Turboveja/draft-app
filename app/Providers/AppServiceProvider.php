@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Response::macro('api_custom_response', function ($success = true, $data = [], $status = 200, $msg = '', $dev_log = [], $headers = []) {
+        Response::macro('api_custom_response', function ($success = true, $data = [], $status = 200, $msg = '', $dev_log = [], $extra_data = [], $headers = []) {
             if (!$success) {
                 \Log::channel('api_custom_error_responses')->error(
                     'api_custom_response Error', [
@@ -34,11 +34,19 @@ class AppServiceProvider extends ServiceProvider
                 ]);
             }
 
-            return Response::make([
+            $response_array = [
                 'success' => $success,
                 'data' => $data,
                 'msg' => $msg
-            ], $status, $headers);
+            ];
+
+            if(count($extra_data)){
+                foreach($extra_data as $extra_data_key => $extra_data_value){
+                    $response_array[$extra_data_key] = $extra_data_value;
+                }
+            }
+
+            return Response::make($response_array, $status, $headers);
         });
     }
 }

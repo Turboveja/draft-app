@@ -38,11 +38,38 @@ interface EloquentRepositoryInterface
      * @return Model
      */
     public function findById(
-        int $modelId,
+        int   $modelId,
         array $columns = ['*'],
         array $relations = [],
         array $appends = []
     ): ?Model;
+
+    /**
+     * @param string $uuid
+     * @param array $columns
+     * @param array $relations
+     * @param array $appends
+     * @return mixed
+     */
+    public function findByUuid(
+        string $uuid,
+        array  $columns = ['*'],
+        array  $relations = [],
+        array  $appends = []
+    ): ?Model;
+
+    /**
+     * @param string $modelUuid
+     * @param array $payload
+     * @return bool
+     */
+    public function updateByUuid(string $modelUuid, array $payload): bool;
+
+    /**
+     * @param string $modelUuid
+     * @return bool
+     */
+    public function deleteByUuid(string $modelUuid): bool;
 
     /**
      * Find trashed model by id.

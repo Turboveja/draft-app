@@ -15,8 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RolePermisionSuiteSeeder::class);
-        $this->call(UsersSuiteSeeder::class);
-        $this->call(CategoriesProductsSeeder::class);
+//        $this->call(RolePermisionSuiteSeeder::class);
+//        $this->call(UsersSuiteSeeder::class);
+
+
+//        $this->call(GenreSeeder::class);
+        $this->call(ExternalUrlTypeSeeder::class);
+        $this->call(AlbumTypeSeeder::class);
+        $this->call(CopyrightSeeder::class);
+//        $this->call(GenreSeeder::class);
+//        $this->call(GenreSeeder::class);
     }
 }

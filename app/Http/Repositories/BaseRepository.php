@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 use App\Http\Repositories\Interfaces\EloquentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 
 /**
@@ -38,6 +39,16 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
+     * @param array $columns
+     * @param array $relations
+     * @return LengthAwarePaginator
+     */
+    public function allPaginated(array $columns = ['*'], array $relations = []): LengthAwarePaginator
+    {
+        return $this->model->with($relations)->paginate();
+    }
+
+    /**
      * Get all trashed models.
      *
      * @return Collection
@@ -63,6 +74,24 @@ class BaseRepository implements EloquentRepositoryInterface
         array $appends = []
     ): ?Model {
         return $this->model->select($columns)->with($relations)->findOrFail($modelId)->append($appends);
+    }
+
+
+    /**
+     * @param string $uuid
+     * @param array $columns
+     * @param array $relations
+     * @param array $appends
+     * @return Model|null
+     */
+    public function findByUuid(
+        string $uuid,
+        array $columns = ['*'],
+        array $relations = [],
+        array $appends = []
+    ): ?Model {
+        $model = $this->model->select($columns)->with($relations)->where('uuid', $uuid)->first();
+        return $model ? $model->append($appends) : null;
     }
 
     /**
@@ -115,6 +144,20 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
+     * Update existing model.
+     *
+     * @param int $modelId
+     * @param array $payload
+     * @return bool
+     */
+    public function updateByUuid(string $modelUuid, array $payload): bool
+    {
+        $model = $this->findByUuid($modelUuid);
+
+        return $model->update($payload);
+    }
+
+    /**
      * Delete model by id.
      *
      * @param int $modelId
@@ -123,6 +166,17 @@ class BaseRepository implements EloquentRepositoryInterface
     public function deleteById(int $modelId): bool
     {
         return $this->findById($modelId)->delete();
+    }
+
+    /**
+     * Delete model by uuid.
+     *
+     * @param string $modelUuid
+     * @return bool
+     */
+    public function deleteByUuid(string $modelUuid): bool
+    {
+        return $this->findByUuid($modelUuid)->delete();
     }
 
     /**

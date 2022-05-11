@@ -26,4 +26,7 @@ Route::resource('users', \App\Http\Controllers\Api\UserController::class)->excep
 Route::get('spotify-test', [\App\Http\Controllers\SpotifyTestController::class, 'sandbox']);
 Route::get('artisan-test', [\App\Http\Controllers\ArtisanExecutionTestController::class, 'sandbox']);
 
-Route::resource('genres', \App\Http\Controllers\Api\GenreController::class)->only(['index', 'store']);
+Route::resource('artists', \App\Http\Controllers\Api\ArtistController::class);
+Route::resource('tracks', \App\Http\Controllers\Api\TrackController::class);
+Route::get('artist-tracks/{artist_uuid}', [\App\Http\Controllers\Api\TrackController::class, 'indexByArtist'])->name('artist.tracks');
+Route::resource('genres', \App\Http\Controllers\Api\GenreController::class);

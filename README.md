@@ -2,15 +2,15 @@
 
 ### Includes
 * Sail+Docker
-* Migrations
-* Seeding
+* DB Migrations Structure (database/migrations)
+* Seeding (database/seeders)
 * Models
 * Controllers
 * Pivot relations
 * Polymorph relation
 * Api CRUDs
 * Repository Pattern (Repositories | Interfaces | Base methods)
-* Custom logger
+* Custom logging channels
 * Role-Permission-User Structure (spatie/laravel-permission)
 * Debug tools (barryvdh/laravel-debugbar)
 * Image local storage
@@ -24,8 +24,10 @@
 * Telescope
 * Third-party connection testing (aerni/laravel-spotify)
 * Full static landing theme (resources/front-end-static | public/front-end-static | LandingController)
+* External tools documentation on resources/documentation: Dbdiagram.io, Postman api collection
 
 ### Future Features
+* XLS import example
 * Adavanced queues
 * Third party dev iSeed
 * Passport suite
@@ -44,8 +46,8 @@
 * Full CRUD template adaptation
 * Id encryption
 * Custom api response advanced
-* Improve SOLID
+* Improve SOLID repository pattern
 * Testing
 * DDD Example
 * Dynamic Landing Page
-* 
+

@@ -13,7 +13,7 @@ class TrackRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,23 @@ class TrackRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'string'],
+            'number' => ['required', 'string'],
+            'explicit' => ['required', 'boolean'],
+
+            'artist_uuid' => ['required', 'exists:artists,uuid'],
+
+            'album_uuids' => ['required', 'array'],
+            'album_uuids.*' => ['exists:albums,uuid'],
+
+            'genres_uuids' => ['required', 'array'],
+            'genres_uuids.*' => ['exists:genres,uuid'],
+
+            'external_uuids' => ['nullable', 'array'],
+            'external_uuids.*.uuid' => ['exists:external_urls,uuid'],
+            'external_uuids.*.name' => ['required', 'string'],
+            'external_uuids.*.url' => ['required', 'url'],
+            'external_uuids.*.external_url_type_uuid' => ['exists:external_url_types,uuid'],
         ];
     }
 }

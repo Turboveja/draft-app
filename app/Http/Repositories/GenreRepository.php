@@ -11,7 +11,7 @@ use App\Models\Genre;
 class GenreRepository extends BaseRepository implements GenreRepositoryInterface
 {
     /**
-     * @var Model
+     * @var Genre
      */
     protected $model;
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('origin_country')->nullable();
             $table->string('contact')->nullable();
-            $table->string('web-slug')->unique()->nullable();
+            $table->string('web_slug')->unique()->nullable();
             $table->dateTime('formed_in')->nullable();
             $table->timestamps();
             $table->softDeletes();
