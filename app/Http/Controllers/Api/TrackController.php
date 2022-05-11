@@ -60,6 +60,8 @@ class TrackController extends BaseCustomController
         try {
             $item = $this->storeItem($params);
 
+            //TODO we have to end the album suite development
+
             //Adds relations
             $this->repository->addAlbumsByUuids($item, $request->album_uuids);
             $this->repository->addGenresByUuids($item, $request->genres_uuids);
@@ -88,6 +90,8 @@ class TrackController extends BaseCustomController
      */
     public function update(TrackRequest $request, string $uuid)
     {
+        //TODO we have to end the album suite development and the store item dev.
+
         $params = [
             'name' => $request->name,
             'origin_country' => $request->origin_country,

@@ -24,7 +24,11 @@ class ArtistRequest extends FormRequest
     public function rules()
     {
         return [
-            //TODO
+            'name' => ['required', 'string'],
+            'origin_country' => ['nullable', 'string'],
+            'contact' => ['nullable', 'string'],
+            'web_slug' => ['nullable', 'string'],
+            'formed_in' => ['nullable', 'date'],
         ];
     }
 }
