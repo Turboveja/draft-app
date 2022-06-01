@@ -36,11 +36,11 @@ class TrackRequest extends FormRequest
             'genres_uuids' => ['required', 'array'],
             'genres_uuids.*' => ['exists:genres,uuid'],
 
-            'external_uuids' => ['nullable', 'array'],
-            'external_uuids.*.uuid' => ['exists:external_urls,uuid'],
-            'external_uuids.*.name' => ['required', 'string'],
-            'external_uuids.*.url' => ['required', 'url'],
-            'external_uuids.*.external_url_type_uuid' => ['exists:external_url_types,uuid'],
+            'external_urls_uuids' => ['nullable', 'array'],
+            'external_urls_uuids.*.uuid' => ['exists:external_urls,uuid'],
+            'external_urls_uuids.*.name' => ['required', 'string'],
+            'external_urls_uuids.*.url' => ['required', 'url'],
+            'external_urls_uuids.*.external_url_type_uuid' => ['exists:external_url_types,uuid'],
         ];
     }
 }

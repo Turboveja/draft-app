@@ -13,7 +13,7 @@ class AlbumRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class AlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['nullable', 'string'],
+            'artist_uuid' => ['required', 'exists:artists,uuid'],
+            'album_type_uuid' => ['required', 'exists:album_types,uuid'],
+            'release_date' => ['nullable', 'date'],
+
+            'genres_uuids' => ['required', 'array'],
+            'genres_uuids.*' => ['exists:genres,uuid'],
+
+            'external_urls_uuids' => ['nullable', 'array'],
+            'external_urls_uuids.*.uuid' => ['exists:external_urls,uuid'],
+            'external_urls_uuids.*.name' => ['required', 'string'],
+            'external_urls_uuids.*.url' => ['required', 'url'],
+            'external_urls_uuids.*.external_url_type_uuid' => ['exists:external_url_types,uuid'],
+
         ];
     }
 }

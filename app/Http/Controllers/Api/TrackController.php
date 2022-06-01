@@ -40,6 +40,22 @@ class TrackController extends BaseCustomController
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param string $uuid
+     * @return \Illuminate\Http\Response
+     */
+    public function show(string $uuid, array $relations = [])
+    {
+        //Get items
+        $row = $this->repository->findByUuid($uuid, ['genres', 'externalUrls', 'artist', 'albums']);
+        $resource = new $this->resource($row);
+
+        //Response
+        return response()->api_custom_response(true, $resource, 200, 'Show');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param TrackRequest $request
@@ -60,12 +76,10 @@ class TrackController extends BaseCustomController
         try {
             $item = $this->storeItem($params);
 
-            //TODO we have to end the album suite development
-
             //Adds relations
             $this->repository->addAlbumsByUuids($item, $request->album_uuids);
             $this->repository->addGenresByUuids($item, $request->genres_uuids);
-            $this->repository->addExternalUrls($item, $request->external_uuids);
+            $this->repository->addExternalUrls($item, $request->external_urls_uuids);
 
             \DB::commit();
 
@@ -90,7 +104,7 @@ class TrackController extends BaseCustomController
      */
     public function update(TrackRequest $request, string $uuid)
     {
-        //TODO we have to end the album suite development and the store item dev.
+        //TODO relations
 
         $params = [
             'name' => $request->name,

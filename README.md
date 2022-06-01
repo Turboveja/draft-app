@@ -1,5 +1,13 @@
 ##### Laravel 9.* Draft Application
 
+### Context
+App Pack that includes:
+* Consumer Api
+* Third-party imports to get Artists data
+* Corporate landing base (route /)
+* Front web by slug that loads artist info (ex: /band-name)
+* Backend panel to manage data
+
 ### Includes
 * Sail+Docker
 * DB Migrations Structure (database/migrations)
@@ -25,6 +33,7 @@
 * Third-party connection testing (aerni/laravel-spotify)
 * Full static landing theme (resources/front-end-static | public/front-end-static | LandingController)
 * External tools documentation on resources/documentation: Dbdiagram.io, Postman api collection
+* Laravel Simple Custom Requests
 
 ### Future Features
 * XLS import example
@@ -33,7 +42,6 @@
 * Passport suite
 * Laravel Breeze Testing
 * Cache uses
-* Laravel Requests
 * Laravel Resources
 * Full package development
 * Api Doc

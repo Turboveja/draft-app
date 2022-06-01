@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('track_id')->references('id')->on('tracks');
-            $table->foreign('album_id')->references('id')->on('genres');
+            $table->foreign('album_id')->references('id')->on('albums');
         });
     }
 

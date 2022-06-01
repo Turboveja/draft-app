@@ -86,8 +86,8 @@ class BaseRepository implements EloquentRepositoryInterface
      */
     public function findByUuid(
         string $uuid,
-        array $columns = ['*'],
         array $relations = [],
+        array $columns = ['*'],
         array $appends = []
     ): ?Model {
         $model = $this->model->select($columns)->with($relations)->where('uuid', $uuid)->first();

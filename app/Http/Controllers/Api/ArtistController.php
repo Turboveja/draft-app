@@ -37,6 +37,22 @@ class ArtistController extends BaseCustomController
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param string $uuid
+     * @return \Illuminate\Http\Response
+     */
+    public function show(string $uuid, array $relations = [])
+    {
+        //Get items
+        $row = $this->repository->findByUuid($uuid, ['albums.tracks']);
+        $resource = new $this->resource($row);
+
+        //Response
+        return response()->api_custom_response(true, $resource, 200, 'Show');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param ArtistRequest $request
