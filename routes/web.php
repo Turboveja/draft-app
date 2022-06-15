@@ -15,11 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 //auth group
 Route::middleware(['auth', 'no-internet-explorer'])->group(function (){
-    Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
+//    Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 //    Route::resource('companies', \App\Http\Controllers\CompanyController::class, ['except' => ['show']]);
 });
-
-//Route::get('/send/email', 'HomeController@mail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,3 +26,5 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/', [\App\Http\Controllers\LandingController::class, 'index']);
+
+Route::get('/morph', [\App\Http\Controllers\SandboxController::class, 'addMorphTest']);

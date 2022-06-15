@@ -13,6 +13,14 @@ class Track extends Model
     protected $guarded = [];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function medias()
+    {
+        return $this->morphToMany(Media::class, 'mediable');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function artist()

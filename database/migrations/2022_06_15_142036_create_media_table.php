@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('imageables', function (Blueprint $table) {
+        Schema::create('medias', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->string('name');
             $table->string('path');
-            $table->nullableMorphs('imageable');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,10 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('imageables', function (Blueprint $table) {
-            $table->dropMorphs('imageable');
-        });
-
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('medias');
     }
 };

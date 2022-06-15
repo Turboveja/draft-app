@@ -13,6 +13,14 @@ class Artist extends Model
     protected $fillable = ['uuid', 'name', 'origin_country', 'contact', 'web_slug', 'formed_in'];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function medias()
+    {
+        return $this->morphToMany(Media::class, 'mediable');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function albums()

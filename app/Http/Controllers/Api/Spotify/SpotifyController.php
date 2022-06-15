@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Spotify;
 
+use App\Models\Artist;
 use Spotify;
 use App\Http\Controllers\Controller;
 use App\Http\Services\SpotifyService;
@@ -26,7 +27,7 @@ class SpotifyController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Aerni\Spotify\Exceptions\SpotifyApiException
      */
-    public function importArtist(string $id)
+    public function importArtist(string $id): Artist
     {
         \DB::beginTransaction();
         try {
@@ -37,6 +38,8 @@ class SpotifyController extends Controller
                 'newArtist' => $artist->name
             ]);
 
+            return response()->json($artist);
+
             \DB::commit();
         } catch (\Exception $ex){
             \Log::channel(LOG_CHANNEL_SPOTIFY)->info([
@@ -45,9 +48,8 @@ class SpotifyController extends Controller
             ]);
 
             \DB::rollback();
+            abort(401);
         }
-
-        return response()->json($artist);
     }
 
     public function importAlbum(string $id)
