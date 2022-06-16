@@ -29,10 +29,19 @@ return [
     */
 
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+        ],
+
+        'artists' => [
+            'driver' => 'local',
+            'root' => storage_path('app/artists'),
+        ],
+
+        'albums' => [
+            'driver' => 'local',
+            'root' => storage_path('app/albums'),
         ],
 
         'images' => [

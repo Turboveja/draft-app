@@ -27,7 +27,7 @@ class SpotifyController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Aerni\Spotify\Exceptions\SpotifyApiException
      */
-    public function importArtist(string $id): Artist
+    public function importArtist(string $id)
     {
         \DB::beginTransaction();
         try {
@@ -38,9 +38,9 @@ class SpotifyController extends Controller
                 'newArtist' => $artist->name
             ]);
 
-            return response()->json($artist);
-
             \DB::commit();
+
+            return response()->json($artist);
         } catch (\Exception $ex){
             \Log::channel(LOG_CHANNEL_SPOTIFY)->info([
                 'importArtist' => $id,

@@ -6,7 +6,10 @@ use App\Models\Album;
 use App\Models\AlbumType;
 use App\Models\Artist;
 use App\Models\ExternalUrl;
+use App\Models\Media;
 use App\Models\Track;
+use DateTime;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spotify;
 
@@ -48,6 +51,7 @@ class SpotifyService
             $spotify_external_url = @$spotify_artist['href'] ?: null;
         }
 
+
         $followers = @$spotify_artist['followers']['total'] ?: 0;
         $images = @$spotify_artist['images'] ?: [];
         $name = @$spotify_artist['name'];
@@ -60,9 +64,40 @@ class SpotifyService
         ]);
 
         //TODO add artist external urls
-        //TODO add images
+
+        //Add the image of artist
+        $spotify_artist_image_url = @$spotify_artist['images'][0]['url'];
+        if ($spotify_artist_image_url) {
+            $this->saveMediaFileToModel($spotify_artist_image_url, $artist, 'artists');
+        }
 
         return $artist;
+    }
+
+    /**
+     * @param $url
+     * @param $model
+     * @param $storage_disk
+     * @return void
+     */
+    public function saveMediaFileToModel($url, $model, $storage_disk)
+    {
+        //Get the image file
+        $file = file_get_contents($url);
+        $file_extension = 'png';
+        $file_name = 'main.' . $file_extension;
+        $file_name_path = $model->uuid . '/' . $file_name;
+
+        //Store the file
+        $new_file = Storage::disk($storage_disk)->put($file_name_path, $file); //name, file
+
+        $model->medias()->attach([
+            Media::create([
+                'uuid' => Str::uuid(),
+                'path' => $file_name_path,
+                'name' => $file_name,
+            ])->id
+        ]);
     }
 
 
@@ -103,7 +138,13 @@ class SpotifyService
             $album = $this->importAlbum($spotify_album, $internal_artist_id);
 
             //TODO add artist external urls
-            //TODO add images
+
+            //Add the image of the album
+            $spotify_album_image_url = @$spotify_album['images'][0]['url'];
+            if ($spotify_album_image_url) {
+                $this->saveMediaFileToModel($spotify_album_image_url, $album, 'albums');
+            }
+
             $artist_albums[] = $album;
 
             //Import tracks
@@ -122,7 +163,7 @@ class SpotifyService
      */
     private function importAlbumTracks($spotify_tracks, $internal_album_id, $internal_artist_id)
     {
-        foreach($spotify_tracks['items'] as $spotify_track){
+        foreach ($spotify_tracks['items'] as $spotify_track) {
             //Internal props
             $images = @$spotify_track['images'];
             $name = @$spotify_track['name'];
@@ -166,8 +207,15 @@ class SpotifyService
         $album_type_id = $this->getAlbumType(@$spotify_album['album_type']);
         $images = @$spotify_album['images'];
         $name = @$spotify_album['name'];
-        $release_date = @$spotify_album['release_date'];
+        $spotify_release_date = @$spotify_album['release_date'];
         $external_url_spotify = @$spotify_album['external_urls']['spotify'] ?: null;
+
+
+        //Parse the release date
+        if (($release_date = DateTime::createFromFormat('Y-m-d', $spotify_release_date)) !== false) {
+        } else {
+            $release_date = DateTime::createFromFormat('Y', $spotify_release_date);
+        }
 
         //new entity
         $album = Album::create([
@@ -175,7 +223,7 @@ class SpotifyService
             'name' => $name,
             'artist_id' => $internal_artist_id,
             'album_type_id' => $album_type_id,
-            'release_date' => $release_date,
+            'release_date' => $release_date->format('Y-m-d'),
         ]);
 
         //add relations

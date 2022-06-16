@@ -45,10 +45,10 @@ class Album extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function tracks()
     {
-        return $this->hasMany(Track::class, 'artist_id', 'id');
+        return $this->belongsToMany(Track::class, 'album_tracks', 'album_id', 'track_id');
     }
 }

@@ -24,4 +24,26 @@ class ArtistRepository extends BaseRepository implements ArtistRepositoryInterfa
     {
         $this->model = $model;
     }
+
+    /**
+     * @param $uuid
+     * @return Artist
+     */
+    public function getFullInfoArtist($uuid): Artist
+    {
+        $model = $this->model->with(['medias', 'albums' => function($f){
+            $f->with('medias');
+            $f->with('genres');
+            $f->with('externalUrls');
+            $f->with(['tracks' => function($f){
+                $f->with('medias');
+                $f->with('genres');
+                $f->with('externalUrls');
+            }]);
+        }])
+            ->where('uuid', $uuid)
+            ->first();
+
+        return $model;
+    }
 }

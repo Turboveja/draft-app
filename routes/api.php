@@ -26,6 +26,8 @@ Route::resource('users', \App\Http\Controllers\Api\UserController::class)->excep
 Route::get('artisan-test', [\App\Http\Controllers\ArtisanExecutionTestController::class, 'sandbox']);
 
 Route::resource('artists', \App\Http\Controllers\Api\ArtistController::class);
+Route::get('artists/full-artist/{artist_uuid}', [\App\Http\Controllers\Api\ArtistController::class, 'getLandingArtist'])->name('artist.fullshow');
+
 Route::resource('albums', \App\Http\Controllers\Api\AlbumController::class);
 Route::resource('tracks', \App\Http\Controllers\Api\TrackController::class);
 Route::get('artist-tracks/{artist_uuid}', [\App\Http\Controllers\Api\TrackController::class, 'indexByArtist'])->name('artist.tracks');

@@ -37,6 +37,19 @@ class ArtistController extends BaseCustomController
     }
 
     /**
+     * @param string $uuid
+     * @return mixed
+     */
+    public function getLandingArtist(string $uuid)
+    {
+        $row = $this->repository->getFullInfoArtist($uuid);
+        $resource = new $this->resource($row);
+
+        //Response
+        return response()->api_custom_response(true, $resource, 200, 'Show full artist');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param string $uuid
