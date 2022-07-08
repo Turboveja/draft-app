@@ -1,0 +1,19 @@
+::selection {
+  background-color: #fe5622;
+  color: #fff;
+}
+::-moz-selection {
+  background-color: #fe5622;
+  color: #fff;
+}
+
+.theme-color{
+  color: #fe5622;
+}
+
+.section-title h2:after,
+.section-title p:after,
+.btn-theme,
+.theme-bg {
+  background: #fe5622;
+}
