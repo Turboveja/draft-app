@@ -19,8 +19,6 @@ Route::middleware(['auth', 'no-internet-explorer'])->group(function (){
 //    Route::resource('companies', \App\Http\Controllers\CompanyController::class, ['except' => ['show']]);
 });
 
-Route::get('/send/email', 'HomeController@mail');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -28,3 +26,5 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/', [\App\Http\Controllers\LandingController::class, 'index']);
+
+Route::get('/morph', [\App\Http\Controllers\SandboxController::class, 'addMorphTest']);
