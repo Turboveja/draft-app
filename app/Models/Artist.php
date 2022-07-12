@@ -27,4 +27,12 @@ class Artist extends Model
     {
         return $this->hasMany(Album::class, 'artist_id', 'id');
     }
+
+    /**
+     * @return null
+     */
+    public function getProfileMediaPath()
+    {
+        return count($this->medias) ? $this->medias->first()->path : null;
+    }
 }

@@ -12,10 +12,5 @@
 */
 
 return [
-    'companies' => 'Compañia|Compañias',
-    'categories' => 'Categoría|Categorías',
-    'products' => 'Producto|Productos',
-
-    //Adj
-    'add' => 'Añadir',
+    'discography' => 'Discografía',
 ];

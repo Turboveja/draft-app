@@ -11,5 +11,5 @@ class ExternalUrlType extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['uuid', 'name'];
+    protected $fillable = ['uuid', 'name', 'code'];
 }

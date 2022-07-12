@@ -38,12 +38,21 @@ class ArtistRepository extends BaseRepository implements ArtistRepositoryInterfa
             $f->with(['tracks' => function($f){
                 $f->with('medias');
                 $f->with('genres');
-                $f->with('externalUrls');
+                $f->with('externalUrls.externalUrlType');
             }]);
         }])
             ->where('uuid', $uuid)
             ->first();
 
         return $model;
+    }
+
+    /**
+     * @param $web_slug
+     * @return mixed
+     */
+    public function getArtistByWebSlug($web_slug)
+    {
+        return Artist::where('web_slug', $web_slug)->first();
     }
 }

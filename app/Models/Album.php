@@ -51,4 +51,12 @@ class Album extends Model
     {
         return $this->belongsToMany(Track::class, 'album_tracks', 'album_id', 'track_id');
     }
+
+    /**
+     * @return null
+     */
+    public function getMainImagePath()
+    {
+        return count($this->medias) ? $this->medias->first()->path : null;
+    }
 }

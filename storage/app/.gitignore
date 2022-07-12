@@ -1,6 +1,6 @@
 *
 !public/
-!artists/
-!albums/
+!public/artists/
+!public/albums/
 !tracks/
 !.gitignore
