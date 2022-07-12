@@ -36,12 +36,23 @@ return [
 
         'artists' => [
             'driver' => 'local',
-            'root' => storage_path('app/artists'),
+            'root' => storage_path('app/public/artists'),
+            'url' => '/storage/artists',
+            'visibility' => 'public',
         ],
 
         'albums' => [
             'driver' => 'local',
-            'root' => storage_path('app/albums'),
+            'root' => storage_path('app/public/albums'),
+            'url' => '/storage/albums',
+            'visibility' => 'public',
+        ],
+
+        'xmldemos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/xmldemos'),
+            'url' => '/storage/xmldemos',
+            'visibility' => 'public',
         ],
 
         'images' => [
@@ -84,6 +95,8 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+//        public_path('artists') => storage_path('app/artists'),
+//        public_path('albums') => storage_path('app/albums'),
     ],
 
 ];

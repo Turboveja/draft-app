@@ -13,18 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 //auth group
-Route::middleware(['auth', 'no-internet-explorer'])->group(function (){
-//    Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
-//    Route::resource('companies', \App\Http\Controllers\CompanyController::class, ['except' => ['show']]);
+Route::middleware(['auth', 'no-internet-explorer'])->group(function () {
+
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//landing group
+Route::get('/{artist_web_slug}', [\App\Http\Controllers\LandingController::class, 'index'])->middleware(['no-internet-explorer']);
+Route::get('/static/demo', [\App\Http\Controllers\LandingController::class, 'indexDemo'])->middleware(['no-internet-explorer']);
 
-require __DIR__.'/auth.php';
+Route::get('/sandbox/demo', [\App\Http\Controllers\LandingController::class, 'sandbox'])->middleware(['no-internet-explorer']);
 
-Route::get('/', [\App\Http\Controllers\LandingController::class, 'index']);
+//XML Creation Demo
+//Route::get('/sandbox/xml-demo', [\App\Http\Controllers\XMLExportationController::class, 'testXML'])->middleware(['no-internet-explorer']);
 
-Route::get('/morph', [\App\Http\Controllers\SandboxController::class, 'addMorphTest']);
+//Generic dashboard //TODO make new artist not found generic
+//Route::get('/', [\App\Http\Controllers\LandingController::class, 'index']);
+
+require __DIR__ . '/auth.php';
+
+
+
+
+
+//Route::get('/morph', [\App\Http\Controllers\SandboxController::class, 'addMorphTest']);

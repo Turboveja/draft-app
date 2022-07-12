@@ -1,8 +1,9 @@
-<section id="home" class="home-banner" style="background-image: url(front-end-static/img/diagonales.jpg);">
+<section id="home" class="home-banner" style="background-image: url('{{ \Storage::disk('artists')->url($artist->getProfileMediaPath()) }}');">
     <div class="container">
         <div class="row justify-content-center text-center full-screen">
             {{--            <div class="col-md-8 col-lg-7">--}}
-            <a href="https://www.youtube.com/watch?v=-D_yJcxMoqY" class="popup-video"
+            {{--                    TODO add external ulrs to artist and get from youtube type --}}
+            <a href="https://www.youtube.com/results?search_query={{ $artist->name }}" class="popup-video"
                style="position: absolute;
                         left: 0;
                         right: 0;
@@ -11,7 +12,7 @@
                         z-index: 2;"
             >
 {{--                    TODO hacer imagen más pequeña, intentar ponerle una animacion--}}
-                <img src="front-end-static/img/icon-play.png" title="" alt=""/>
+                <img src="front-end-dynamic/img/icon-play.png" title="" alt=""/>
             </a>
             {{--            </div> <!-- col -->--}}
         </div> <!-- row -->
@@ -37,7 +38,7 @@
     {{--        <div class="row justify-content-center text-center">--}}
     {{--            <div class="col-md-8 col-lg-7">--}}
     {{--                <a href="https://www.youtube.com/watch?v=-D_yJcxMoqY" class="popup-video">--}}
-    {{--                    <img src="front-end-static/img/icon-play.png" title="" alt=""/>--}}
+    {{--                    <img src="front-end-dynamic/img/icon-play.png" title="" alt=""/>--}}
     {{--                </a>--}}
     {{--                --}}{{--                <h4 class="font-alt">Unique. Powerful. Creative.</h4>--}}
     {{--                --}}{{--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut--}}

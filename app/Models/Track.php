@@ -51,4 +51,20 @@ class Track extends Model
     {
         return $this->belongsToMany(ExternalUrl::class, 'track_external_urls', 'track_id', 'external_url_id');
     }
+
+    /**
+     * @return array
+     */
+    public function getYoutubeExternalUrls()
+    {
+        $youtube_urls = [];
+
+        foreach($this->externalUrls as $externalUrl){
+            if($externalUrl->externalUrlType->code === EXTERNAL_URL_CODE_YOUTUBE){
+                $youtube_urls[] = $externalUrl;
+            }
+        }
+
+        return $youtube_urls;
+    }
 }

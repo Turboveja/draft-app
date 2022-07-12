@@ -35,6 +35,11 @@ App Pack that includes:
 * External tools documentation on resources/documentation: Dbdiagram.io, Postman api collection
 * Laravel Simple Custom Requests
 
+### Next Step
+* XML Exporting Test
+* New external id fields on album, artist and track
+* Add external url to artists to use on main video of landing page
+
 ### Future Features
 * XLS import example
 * Adavanced queues
